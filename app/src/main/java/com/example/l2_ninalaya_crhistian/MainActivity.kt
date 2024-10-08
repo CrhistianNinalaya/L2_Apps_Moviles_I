@@ -136,50 +136,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
-//
-//
-//    private fun updatePost(postId: Int) {
-//        val retrofit = Retrofit.Builder()
-//            .baseUrl("https://jsonplaceholder.typicode.com/")
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//
-//        val jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi::class.java)
-//
-//        // Crear un nuevo objeto Posts con los datos actualizados
-//        val updatedPost = Posts()
-//        updatedPost.setUserId(1)
-//        updatedPost.setId(postId)  // Establecer el ID del post que quieres actualizar
-//        updatedPost.setTitle("Título actualizado")
-//        updatedPost.setBody("Contenido actualizado")
-//
-//        val call = jsonPlaceHolderApi.updatePost(postId, updatedPost)
-//
-//        call.enqueue(object : Callback<Posts> {
-//            override fun onResponse(call: Call<Posts>, response: Response<Posts>) {
-//                if (!response.isSuccessful) {
-//                    println("Código: ${response.code()}")
-//                    return
-//                }
-//
-//                val postResponse = response.body()
-//                if (postResponse != null) {
-//                    println("Post actualizado con éxito:")
-//                    println("ID: ${postResponse.getId()}")
-//                    println("Título: ${postResponse.getTitle()}")
-//                    println("Contenido: ${postResponse.getBody()}")
-//                    var content="Post insertado con éxito:"
-//                    content+="ID: ${postResponse.getId()}" +"\n"
-//                    content+="Título: ${postResponse.getTitle()}" +"\n"
-//                    content+="Contenido: ${postResponse.getBody()}"+"\n"
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<Posts>, t: Throwable) {
-//                println("Error: ${t.message}")
-//            }
-//        })
-//    }
+
+
 
 //    private fun deletePost(postId: Int) {
 //        val retrofit = Retrofit.Builder()

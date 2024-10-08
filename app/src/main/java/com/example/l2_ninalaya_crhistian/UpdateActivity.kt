@@ -30,6 +30,7 @@ class UpdateActivity : AppCompatActivity() {
 
     private val ruta = "https://jsonplaceholder.typicode.com/"
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.actualizar_post)
@@ -54,10 +55,57 @@ class UpdateActivity : AppCompatActivity() {
         }
 
         // Botón "Acutalizar"
-        val btnInsertar = findViewById<Button>(R.id.btnInsertar)
-        btnInsertar.setOnClickListener {
+        val btnActualizar = findViewById<Button>(R.id.btnActualizar)
+        btnActualizar.setOnClickListener {
+            actualizarPost()
         }
     }
+
+    private fun actualizarPost() {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(ruta)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi::class.java)
+
+        val postId = txtid.text.toString().toInt()
+        val userId = txtuserId.text.toString().toInt()
+        val title = txtTitle.text.toString()
+        val body = txtbody.text.toString()
+
+        val postActualizado = Posts()
+        postActualizado.setId(postId)
+        postActualizado.setUserId(userId)
+        postActualizado.setTitle(title)
+        postActualizado.setBody(body)
+
+        val call = jsonPlaceHolderApi.updatePost(postId, postActualizado)
+
+        call.enqueue(object : Callback<Posts> {
+            override fun onResponse(call: Call<Posts>, response: Response<Posts>) {
+                if (response.isSuccessful) {
+                    val postResponse = response.body()
+                    if (postResponse != null) {
+                        val content = "Post actualizado con éxito:\n" +
+                                "ID: ${postResponse.getId()}\n" +
+                                "UserID: ${postResponse.getUserId()}\n" +
+                                "Título: ${postResponse.getTitle()}\n" +
+                                "Contenido: ${postResponse.getBody()}"
+                        mjsonTxtView.append(content)
+                        Toast.makeText(this@UpdateActivity, "Post Actualizado con éxito", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    println("Código: ${response.code()}")
+                }
+            }
+
+            override fun onFailure(call: Call<Posts>, t: Throwable) {
+                println("Error: ${t.message}")
+            }
+        })
+    }
+
 
     private fun getPostById(id: Int) {
         val retrofit = Retrofit.Builder()
