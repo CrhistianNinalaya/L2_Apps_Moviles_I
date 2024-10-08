@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateActivity"
+    android:padding="20dp"
+    >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Actualizar post"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/textView">
+
+        <!-- Etiqueta "ID:" -->
+        <TextView
+            android:id="@+id/lblId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:layout_marginTop="20dp"
+            />
+
+        <!-- Campo de entrada para el ID -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/txtid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Valor autogenerado"
+            android:inputType="number"
+            android:layout_marginTop="8dp"
+            android:enabled="false"
+            />
+        <!-- Etiqueta "ID:" -->
+        <TextView
+            android:id="@+id/lblUserId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UserID"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:layout_marginTop="20dp"
+            />
+
+        <!-- Campo de entrada para el ID -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/txtuserId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese el UserID"
+            android:inputType="number"
+            android:layout_marginTop="8dp"
+            />
+
+        <!-- Etiqueta "ID:" -->
+        <TextView
+            android:id="@+id/lblTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:layout_marginTop="20dp"
+            />
+
+        <!-- Campo de entrada para el ID -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese el Title"
+            android:layout_marginTop="8dp"
+            />
+
+        <!-- Etiqueta "ID:" -->
+        <TextView
+            android:id="@+id/lblBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Body"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:layout_marginTop="20dp"
+            />
+
+        <!-- Campo de entrada para el ID -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/txtbody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese el Body"
+            android:layout_marginTop="8dp"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/jsonTextInsert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/jsonTextInsert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:layout_weight="1"
+            />
+
+        <Button
+            android:id="@+id/btnInsertar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Actualizar"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
