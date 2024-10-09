@@ -59,18 +59,15 @@ class InsertActivity : AppCompatActivity() {
 
         val jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi::class.java)
 
-        // Obtener los valores ingresados por el usuario
         val userId = txtuserId.text.toString().toInt()
         val title = txtTitle.text.toString()
         val body = txtbody.text.toString()
 
-        // Crear un nuevo post con los datos del usuario
         val newPost = Posts()
         newPost.setUserId(userId)
         newPost.setTitle(title)
         newPost.setBody(body)
 
-        // Realizar la llamada para insertar el post
         val call = jsonPlaceHolderApi.createPost(newPost)
 
         call.enqueue(object : Callback<Posts> {
@@ -88,7 +85,6 @@ class InsertActivity : AppCompatActivity() {
                     println("Título: ${postResponse.getTitle()}")
                     println("Contenido: ${postResponse.getBody()}")
 
-                    // También puedes actualizar tu TextView aquí si lo deseas
                     var content = "Post insertado con éxito:\n"
                     content += "ID: ${postResponse.getId()}\n"
                     content += "UserID: ${postResponse.getUserId()}\n"
